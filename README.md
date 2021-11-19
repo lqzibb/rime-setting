@@ -35,8 +35,9 @@
 
 # 参考
 
-1. [hosxy/rime-aurora-pinyin 极光拼音](https://github.com/hosxy/rime-aurora-pinyin)
-2. [fkxxyz/rime-cloverpinyin 🍀️四叶草拼音输入方案](https://github.com/fkxxyz/rime-cloverpinyin)
-3. [Schema.yaml & Dict.yaml 详解](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md)
-4. [Rime 定製指南](https://github.com/rime/home/wiki/CustomizationGuide)
-5. [Rime 輸入方案設計書](https://github.com/rime/home/wiki/RimeWithSchemata)
+- [🍀️四叶草拼音输入方案](https://github.com/fkxxyz/rime-cloverpinyin)
+- [极光拼音](https://github.com/hosxy/rime-aurora-pinyin)
+- [Schema.yaml & Dict.yaml 详解](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md)
+- [Rime 定製指南](https://github.com/rime/home/wiki/CustomizationGuide)
+- [Rime 輸入方案設計書](https://github.com/rime/home/wiki/RimeWithSchemata)
+- [Rime输入法Emoji与符号滤镜](https://github.com/rtransformation/rime-opencc_emoji_symbols)
