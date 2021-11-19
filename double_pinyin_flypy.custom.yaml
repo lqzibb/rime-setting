@@ -34,6 +34,7 @@ patch:
    simplifier:
       option_name: zh_simp_s2t
       opencc_config: s2t.json
+   # 定义了一个开关，位于"switches:zh_simp_s2t"
 
 # emoji输入
    "engine/filters/@9": simplifier@emoji_suggestion # 输入Emoji
@@ -41,6 +42,7 @@ patch:
       option_name: emoji_suggestion
       opencc_config: emoji.json
       tips: all
+   # 定义了一个开关，位于"switches:emoji_suggestion"
 
 # 载入自定义短语
    # 来自custom_phrase.txt
@@ -94,9 +96,9 @@ patch:
    key_binder:
       # select_first_character: 'bracketleft'
       # select_last_character: 'bracketright'
-      #import_preset: default #导入默认设置
+      #import_preset: default # 导入默认设置
       bindings:
-         - {accept: "Alt+k", send: "Control+Delete", when: composing} #删除自动造词，或重置词库中词的词频
+         - {accept: "Alt+k", send: "Control+Delete", when: composing} # 删除自动造词，或重置词库中词的词频
          #- {accept: "Control+h", send: BackSpace, when: composing}
          #- {accept: "Control+g", send: Escape, when: composing}
          #- {accept: "Control+bracketleft", send: Escape, when: composing}
@@ -126,14 +128,14 @@ patch:
          - {accept: 8, send: 5, when: composing}
          - {accept: 9, send: 5, when: composing}
          - {accept: 0, send: 5, when: composing}
-   editor:
-      bindings:
-         Control_L: commit_comment
+   # editor:
+   #    bindings:
+   #       Control_L: commit_comment
 
 # 符号输入
-   "punctuator/import_preset": symbols #导入symbols.yaml文件中的内容
-   "recognizer/patterns/punct": "\\\\[a-z]*$" #配合symbols.yaml中的特殊字符输入
+   "punctuator/import_preset": symbols # 导入`symbols.yaml`文件中的内容
+   "recognizer/patterns/punct": "\\\\[a-z]*$" # 触发`symbols.yaml`中的特殊字符输入
+   # recognizer与matcher搭配，处理符合特定规则的输入码，如网址，反查等tags
 
 # 杂项
-   #recognizer与matcher搭配，处理符合特定规则的输入码，如网址，反查等tags
-   "speller/delimiter": "'" #上屛时音节间分音符
+   "speller/delimiter": "'" # 上屛时音节间分音符
