@@ -1,0 +1,51 @@
+# 小狼毫配置文件📄
+# encoding: utf-8
+patch:
+# 小狼毫Theme
+  style:
+    color_scheme: user_gry # 选择配色
+    display_tray_icon: false # 显示托盘图标
+    font_face: "Noto Sans SC Medium" # 选择字体（小狼毫只支持同时填写一种字体）
+    font_point: 18 # 字体大小
+    fullscreen: false
+    horizontal: true # 候选字横排
+    inline_preedit: true # 内嵌编码（仅支持 TSF）
+    label_format: "%s" # 候选标签格式❔不理解,不要改
+    layout: {border_width: 3, candidate_spacing: 8, hilite_padding: 4, hilite_spacing: 4, margin_x: 8, margin_y: 8, min_height: 0, min_width: 0, round_corner: 4, spacing: 0}
+
+    # 以下为一些外观配置项，小狼毫不支持
+    #line_spacing: 20 #行距
+
+# 配置特定程序的输入选项
+  "app_options/WindowsTerminal.exe":
+    ascii_mode: true
+  "app_options/code.exe":
+    ascii_mode: true
+
+# 添加自己配置的Theme
+  "preset_color_schemes/demo_one_gray":
+    author: lqzibb
+    back_color: 0xD9D9D9
+    border_color: 0xB3B3B3
+    candidate_text_color: 0x000000
+    comment_text_color: 0x6B6B6B
+    hilited_back_color: 0xBDBDBD
+    hilited_candidate_back_color: 0xFFFFFF
+    hilited_candidate_label_color: 0xE63535
+    hilited_candidate_text_color: 0x000000
+    hilited_corner_radius: 15
+    hilited_text_color: 0x000000
+    name: demo_one_gray
+    text_color: 0x000000
+  "preset_color_schemes/user_gry":
+    author: lqzibb
+    back_color: 0xEBEBEB
+    border_color: 0xE1E1E1
+    candidate_text_color: 0x000000
+    comment_text_color: 0x616161
+    hilited_back_color: 0xD4D4D4
+    hilited_candidate_back_color: 0xFFFFFF
+    hilited_candidate_text_color: 0x000000
+    hilited_text_color: 0x000000
+    name: user_gry
+    text_color: 0x000000

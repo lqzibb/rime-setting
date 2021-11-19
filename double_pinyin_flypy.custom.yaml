@@ -1,0 +1,139 @@
+# Rime schema
+# @lqzibb costom
+# encoding: utf-8
+patch:
+
+# 描述修改
+   "schema/description": 极光拼音＋小鹤双拼方案
+
+# 主 translator 引擎设定
+   "translator/dictionary": custom # 导入词库
+   "translator/enable_encoder": true # 是否开启自动造词
+   "translator/max_phrase_length": 5 # 最大自动成词词长
+   "translator/encode_commit_history": true # 是否对已上屛词自动成词
+   "translator/enable_completion": true # 逐键提示，提前显示尚未输入完整码的字
+   #"translator/sentence_over_completion": true #在无全码对应字而仅有逐键提示时也开启智能组句
+   "translator/enable_sentence": true # 是否开启自动造句
+   "translator/enable_user_dict": true # 是否开启用户词典〔用户词典记录动态字词频，用户词〕
+   "translator/preedit_format": {} # 输入双拼码的时候是否转化为全拼码
+
+# lua 脚本
+   # 输入时间，日期（关键词请查看rime.lua脚本对应函数）
+   "engine/translators/@8": lua_translator@date_translator
+   # 以词定字 ⚠️无效
+   "engine/processors/@9": lua_processor@select_character_processor
+
+# 加载语言模型
+   "translator/contextual_suggestions": true # 是否使用语言模型优化输出结果〔需配合grammar使用〕
+   grammar:
+      language: zh-hant-t-s1-bgc
+   "translator/max_homophones": 7 # 最大同音簇长度〔需配合grammar使用〕
+   "translator/max_homographs": 7 # 最大同形簇长度〔需配合grammar使用〕
+
+# 简体转繁体
+   simplifier:
+      option_name: zh_simp_s2t
+      opencc_config: s2t.json
+
+# emoji输入
+   "engine/filters/@9": simplifier@emoji_suggestion # 输入Emoji
+   emoji_suggestion:
+      option_name: emoji_suggestion
+      opencc_config: emoji.json
+      tips: all
+
+# 载入自定义短语
+   # 来自custom_phrase.txt
+   "engine/translators/@9": table_translator@custom_phrase # 载入引擎
+   custom_phrase:
+      dictionary: ""
+      user_dict: custom_phrase
+      db_class: stabledb
+      enable_completion: false
+      enable_sentence: false
+      initial_quality: 1
+
+# 笔画反查
+   reverse_lookup:
+      dictionary: stroke # 字典文件，程序默认配置目录中的`stroke.dict.yaml`文件
+      enable_completion: true #提前显示尚未输入完整码的字
+      prefix: "%" # 反查触发前缀，需要和"recognizer/patterns/reverse_lookup"配合
+      suffix: "'" # 反查结束后缀，输入该后缀可以在输入框内结束反查而不结束输入，好像没啥大用😂
+      tips: "〔输入笔画:h一 s丨 p丿 n丶 z乙〕" # 提示语
+      preedit_format: # 上屏码自定义
+         - xlit/hspnz/一丨丿丶乙/
+      comment_format: # 提示码自定义
+         - xform/([nl])v/$1ü/
+   # 激活反查,通过修改[a-z]前面的字符来达到自定义字符激活
+   # 需与`reverse_lookup/prefix`中字符相同
+   "recognizer/patterns/reverse_lookup": "%[a-z]*'?$"
+
+# 选项开关
+   # 不同输入方案可以设定不同的选项，会在『方案选单』中显示
+   switches:
+      # 对齐文本时无视"-"
+      # reset可设为0/1
+    - name: ascii_mode
+      reset: 1 # 1为中文
+      #states: [ 中文, 西文 ] #注释起来，不在方案选单中显示
+    - name: full_shape
+      reset: 0 # 0为半角
+      states: [ 半角, 全角 ]
+    - name: zh_simp_s2t
+      reset: 0 # 0为简体
+      states: [ "简体", "繁體" ]
+    - name: ascii_punct
+      reset: 0 # 0为中文标点
+      states: [ 《》, <> ]
+    - name: emoji_suggestion
+      reset: 1 #0为不开启
+      states: [ "🈚️️", "🈶️️" ] #原版，后面的/*字符显示不出来
+      #states: [ "🎈", "😀️" ]
+
+# 快捷键设置
+   key_binder:
+      # select_first_character: 'bracketleft'
+      # select_last_character: 'bracketright'
+      #import_preset: default #导入默认设置
+      bindings:
+         - {accept: "Alt+k", send: "Control+Delete", when: composing} #删除自动造词，或重置词库中词的词频
+         #- {accept: "Control+h", send: BackSpace, when: composing}
+         #- {accept: "Control+g", send: Escape, when: composing}
+         #- {accept: "Control+bracketleft", send: Escape, when: composing}
+         #- {accept: "Control+v", send: Page_Down, when: composing}
+         #- {accept: "Shift+Tab", send: Page_Up, when: composing}
+         #......................................................
+         #操作輸入碼
+         - {accept: Tab, send: Down, when: has_menu}
+         #- {accept: grave, send: "Control+Left", when: has_menu}
+         #- {accept: Tab, send: "Control+Right", when: has_menu}
+         #......................................................
+         #翻页
+         #- {accept: bracketleft, send: Page_Up, when: composing}
+         #- {accept: bracketright, send: Page_Down, when: composing}
+         - {accept: minus, send: Page_Up, when: paging}
+         - {accept: equal, send: Page_Down, when: composing}
+         - {accept: comma, send: Page_Up, when: paging}
+         - {accept: period, send: Page_Down, when: composing}
+         #.....................................................
+         #快速选词
+         - {accept: 1, send: 1, when: composing}
+         - {accept: 2, send: 2, when: composing}
+         - {accept: 3, send: 3, when: composing}
+         - {accept: 5, send: 4, when: composing}
+         - {accept: 6, send: 4, when: composing}
+         - {accept: 7, send: 4, when: composing}
+         - {accept: 8, send: 5, when: composing}
+         - {accept: 9, send: 5, when: composing}
+         - {accept: 0, send: 5, when: composing}
+   editor:
+      bindings:
+         Control_L: commit_comment
+
+# 符号输入
+   "punctuator/import_preset": symbols #导入symbols.yaml文件中的内容
+   "recognizer/patterns/punct": "\\\\[a-z]*$" #配合symbols.yaml中的特殊字符输入
+
+# 杂项
+   #recognizer与matcher搭配，处理符合特定规则的输入码，如网址，反查等tags
+   "speller/delimiter": "'" #上屛时音节间分音符

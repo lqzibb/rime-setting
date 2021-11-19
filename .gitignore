@@ -1,0 +1,6 @@
+desktop.ini
+custom_phrase.txt
+*.userdb/
+build/
+installation.yaml
+user.yaml
