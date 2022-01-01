@@ -23,6 +23,6 @@ patch:
   "switcher/save_options": "" # 配置额外选项，可在各输入方案中通过`switches`配置
 
 # 输入框中文字相关的调整
-  "menu/page_size": 5 #单页字数
+  "menu/page_size": 9 #单页字数
   #menu/alternative_select_labels: [⑴,⑵,⑶,⑷,⑸,⑹,⑺,⑻,⑼]  # 🏷️候选字标签
   #menu/alternative_select_keys: ASDFGHJKL #如編碼字符佔用數字鍵則須另設選字鍵

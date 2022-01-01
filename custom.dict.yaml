@@ -8,6 +8,7 @@ sort: by_weight
 # 在下面的列表添加词库
 import_tables:
   - aurora_pinyin #极光拼音基础词库
+  #- cet
 ...
 
 #融合词

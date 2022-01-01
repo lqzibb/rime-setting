@@ -21,7 +21,7 @@ patch:
    # 输入时间，日期（关键词请查看rime.lua脚本对应函数）
    "engine/translators/@8": lua_translator@date_translator
    # 以词定字 ⚠️无效
-   "engine/processors/@9": lua_processor@select_character_processor
+   #"engine/processors/@9": lua_processor@select_character_processor
 
 # 加载语言模型
    "translator/contextual_suggestions": true # 是否使用语言模型优化输出结果〔需配合grammar使用〕
@@ -41,8 +41,20 @@ patch:
    es_conversion:
       opencc_config: es.json
       option_name: show_es
-      tips: all
+      # tips: all # emoji注释
    # 定义了一个开关，位于"switches:show_es"
+
+# 中英混输
+   "engine/translators/@10": table_translator@cet
+   cet:
+      dictionary: "cet"
+      initial_quality: 1
+      prefix: "="
+      # enable_user_dict: false       # 关闭用户词典
+      # enable_completion: true       # 提前提示尚未輸入完整码的字
+      # enable_encoder: false         # 自动造词
+      # enable_sentence: false        # 自动造句
+      # encode_commit_history: false  # 是否對已上屛詞自動成詞
 
 # 载入自定义短语
    # 来自custom_phrase.txt
@@ -54,6 +66,30 @@ patch:
       enable_completion: false
       enable_sentence: false
       initial_quality: 1
+
+# 选项开关
+   # 不同输入方案可以设定不同的选项，会在『方案选单』中显示
+   switches:
+      # 对齐文本时无视"-"
+      # reset可设为0/1
+   #  - name: cet
+   #    reset: 1
+   #    states: [ 中文, 混输 ]
+    - name: ascii_mode
+      reset: 1 # 1为中文
+      #states: [ 中文, 西文 ] #注释起来，不在方案选单中显示
+    - name: full_shape
+      reset: 0 # 0为半角
+      states: [ 半角, 全角 ]
+    - name: zh_simp_s2t
+      reset: 0 # 0为简体
+      states: [ "简体", "繁體" ]
+    - name: ascii_punct
+      reset: 0 # 0为中文标点
+      states: [ 《》, <> ]
+    - name: show_es
+      reset: 0 # 0为不开启
+      states: [ "🈚️️", "🈶️️" ]
 
 # 笔画反查
    reverse_lookup:
@@ -69,27 +105,6 @@ patch:
    # 激活反查,通过修改[a-z]前面的字符来达到自定义字符激活
    # 需与`reverse_lookup/prefix`中字符相同
    "recognizer/patterns/reverse_lookup": "%[a-z]*'?$"
-
-# 选项开关
-   # 不同输入方案可以设定不同的选项，会在『方案选单』中显示
-   switches:
-      # 对齐文本时无视"-"
-      # reset可设为0/1
-    - name: ascii_mode
-      reset: 1 # 1为中文
-      #states: [ 中文, 西文 ] #注释起来，不在方案选单中显示
-    - name: full_shape
-      reset: 0 # 0为半角
-      states: [ 半角, 全角 ]
-    - name: zh_simp_s2t
-      reset: 0 # 0为简体
-      states: [ "简体", "繁體" ]
-    - name: ascii_punct
-      reset: 0 # 0为中文标点
-      states: [ 《》, <> ]
-    - name: show_es
-      reset: 1 # 0为不开启
-      states: [ "🈚️️", "🈶️️" ]
 
 # 快捷键设置
    key_binder:
@@ -118,15 +133,15 @@ patch:
          - {accept: period, send: Page_Down, when: composing}
          #.....................................................
          #快速选词
-         - {accept: 1, send: 1, when: composing}
-         - {accept: 2, send: 2, when: composing}
-         - {accept: 3, send: 3, when: composing}
-         - {accept: 5, send: 4, when: composing}
-         - {accept: 6, send: 4, when: composing}
-         - {accept: 7, send: 4, when: composing}
-         - {accept: 8, send: 5, when: composing}
-         - {accept: 9, send: 5, when: composing}
-         - {accept: 0, send: 5, when: composing}
+         # - {accept: 1, send: 1, when: composing}
+         # - {accept: 2, send: 2, when: composing}
+         # - {accept: 3, send: 3, when: composing}
+         # - {accept: 5, send: 4, when: composing}
+         # - {accept: 6, send: 4, when: composing}
+         # - {accept: 7, send: 4, when: composing}
+         # - {accept: 8, send: 5, when: composing}
+         # - {accept: 9, send: 5, when: composing}
+         # - {accept: 0, send: 5, when: composing}
    # editor:
    #    bindings:
    #       Control_L: commit_comment
