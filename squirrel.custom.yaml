@@ -1,0 +1,18 @@
+config_version: '1.0'
+
+patch:
+    show_notifications_when: always # 状态通知，适当，也可设为全开（always）全关（never）
+    us_keyboard_layout: true #美式键盘布局
+    app_options:
+        {}
+    style:
+        color_scheme: google
+        color_scheme_dark: solarized_rock
+        candidate_list_layout: linear
+        text_orientation: horizontal
+        label_font_face: Bradley Hand   # 候选词编号字体
+        label_font_size: 15             # 候选词编号大小
+        font_face: "Maple Mono NF CN"
+        font_point: 24
+        inline_preedit: true
+        corner_radius: 9
