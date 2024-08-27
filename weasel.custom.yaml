@@ -3,16 +3,29 @@
 patch:
 # 小狼毫Theme
   style:
-    color_scheme: user_gry # 选择配色
+    color_scheme: wechat_light # 选择配色
     display_tray_icon: false # 显示托盘图标
-    font_face: "Noto Sans SC Medium" # 选择字体（小狼毫只支持同时填写一种字体）
+    font_face: "Maple Mono NF CN" # 选择字体（小狼毫只支持同时填写一种字体）
     font_point: 18 # 字体大小
     fullscreen: false
     horizontal: true # 候选字横排
     inline_preedit: true # 内嵌编码（仅支持 TSF）
     label_format: "%s" # 候选标签格式❔不理解,不要改
-    layout: {border_width: 3, candidate_spacing: 8, hilite_padding: 4, hilite_spacing: 4, margin_x: 8, margin_y: 8, min_height: 0, min_width: 0, round_corner: 4, spacing: 0}
-
+    layout:
+      min_width: 10
+      margin_x: 12
+      margin_y: 6
+      border: 2
+      spacing: 20
+      candidate_spacing: 22
+      hilite_spacing: 6
+      hilite_padding: 2
+      hilite_padding_x: 8
+      corner_radius: 10
+      round_corner: 8
+      shadow_radius: 8
+      shadow_offset_x: 3
+      shadow_offset_y: 3
     # 以下为一些外观配置项，小狼毫不支持
     #line_spacing: 20 #行距
 
@@ -49,3 +62,77 @@ patch:
     hilited_text_color: 0x000000
     name: user_gry
     text_color: 0x000000
+  "preset_color_schemes/mint_light_blue":
+    name: "蓝水鸭／Mint Light Blue"
+    author: Mintimate <"Mintimate's Blog">
+    # 拼音串
+    text_color: 0x6495ed
+    # 背景
+    back_color: 0xFFFFFF
+    # 预选栏编号颜色
+    label_color: 0xcac9c8
+    # 边框
+    border_color: 0xefefef
+    shadow_color: 0xb4000000
+    # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间
+    candidate_format: '%c %@ '
+    # 注解文字
+    comment_text_color: 0xcac9c8
+    # 非第一候选项
+    candidate_text_color: 0x424242
+    # 拼音串高亮
+    hilited_text_color: 0xed9564
+    # 拼音串高亮背景
+    hilited_back_color: 0xefefef
+    # 第一候选项背景
+    hilited_candidate_back_color: 0xed9564
+    # 第一候选项
+    hilited_candidate_text_color: 0xefefef
+    # 第一候选项编号颜色
+    hilited_candidate_label_color: 0xcac9c8
+    # 第一候选项编号颜色
+    hilited_label_color: 0xcac9c8
+    # 注解文字高亮
+    hilited_comment_text_color: 0xefefef
+  "preset_color_schemes/wechat_light":
+    name: 微信键盘浅色
+    author: zsakvo
+    horizontal: true                          # true横排，false竖排
+    back_color: 0xFFFFFF                      # 候选条背景色
+    border_height: 0                          # 窗口上下高度，大于圆角半径才生效
+    border_width: 8                           # 窗口左右宽度，大于圆角半径才生效
+    candidate_format: '%c %@ '                # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间
+    comment_text_color: 0x999999              # 拼音等提示文字颜色
+    corner_radius: 5                          # 窗口圆角
+    hilited_corner_radius: 5                  # 高亮圆角
+    font_face: 'Maple UI'                     # 候选词字体
+    font_point: 16                            # 候选字大小
+    hilited_candidate_back_color: 0x75B100    # 第一候选项背景色
+    hilited_candidate_text_color: 0xFFFFFF    # 第一候选项文字颜色
+    label_font_point: 12                      # 候选编号大小
+    text_color: 0x424242                      # 拼音行文字颜色
+    inline_preedit: true                      # 拼音位于： 候选框 false | 行内
+    border_color: 0x00FFFFFF
+    shadow_color: 0x4c808080                  #阴影颜色
+  “preset_color_schemes/wechat_dark”:
+    name: 微信键盘深色
+    author: zsakvo
+    horizontal: true                          # true横排，false竖排
+    back_color: 0x2e2925                      # 候选条背景色
+    border_height: 0                          # 窗口上下高度，大于圆角半径才生效
+    border_width: 8                           # 窗口左右宽度，大于圆角半径才生效
+    candidate_format: '%c %@ '                # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间
+    comment_text_color: 0x999999              # 拼音等提示文字颜色
+    corner_radius: 5                          # 窗口圆角
+    hilited_corner_radius: 5                  # 高亮圆角
+    font_face: 'Maple UI'                     # 候选词字体
+    font_point: 16                            # 候选字大小
+    hilited_candidate_back_color: 0x75B100    # 第一候选项背景色
+    hilited_candidate_text_color: 0xFFFFFF    # 第一候选项文字颜色
+    label_font_point: 12                      # 候选编号大小
+    text_color: 0x424242                      # 拼音行文字颜色
+    label_color: 0x999999                     # 预选栏编号颜色
+    candidate_text_color: 0xe9e9ea            # 预选项文字颜色
+    inline_preedit: false                     # 拼音位于： 候选框 false | 行内 true
+    border_color: 0x00FFFFFF
+    shadow_color: 0x4c808080                  #阴影颜色

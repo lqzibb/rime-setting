@@ -1,0 +1,5 @@
+2022/02/05-20:39:44.895000 12164 Table #380: 2572 entries OK
+2022/02/05-20:39:44.911000 12164 Table #388: 14 entries OK
+2022/02/05-20:39:44.911000 12164 Table #395: 6 entries OK
+2022/02/05-20:39:44.911000 12164 Table #400: 12 entries OK
+2022/02/05-20:39:44.911000 12164 **** Repaired leveldb C:\Users\lq\.config\rime\custom.userdb; recovered 4 files; 101075 bytes. Some data may have been lost. ****

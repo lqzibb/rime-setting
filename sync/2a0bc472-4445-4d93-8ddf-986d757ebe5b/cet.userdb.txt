@@ -1,0 +1,5 @@
+# Rime user dictionary
+#@/db_name	cet.userdb
+#@/db_type	userdb
+#@/rime_version	1.5.3
+#@/user_id	2a0bc472-4445-4d93-8ddf-986d757ebe5b

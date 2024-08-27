@@ -1,0 +1,28 @@
+# RIME输入方案总配置文档
+# encoding: utf-8
+patch:
+  "ascii_composer/switch_key":
+    Caps_Lock: noop
+    Control_L: noop
+    Control_R: noop
+    Shift_L: commit_code
+    Shift_R: commit_code
+
+# 开启的输入方案列表
+  schema_list:
+    - {schema: double_pinyin_flypy}
+    - {schema: aurora_pinyin}
+
+# 方案选单
+  "switcher/caption": "「选择方案」" #方案选单的提示语
+  "switcher/hotkeys": # 方案选单的热键，可以配置多个
+    - "Control+semicolon"
+  "switcher/option_list_separator": " "
+  "switcher/abbreviate_options": false # 缩写选项
+  "switcher/fold_options": true # 是否折叠选项
+  "switcher/save_options": "" # 配置额外选项，可在各输入方案中通过`switches`配置
+
+# 输入框中文字相关的调整
+  "menu/page_size": 9 #单页字数
+  #menu/alternative_select_labels: [⑴,⑵,⑶,⑷,⑸,⑹,⑺,⑻,⑼]  # 🏷️候选字标签
+  #menu/alternative_select_keys: ASDFGHJKL #如編碼字符佔用數字鍵則須另設選字鍵
